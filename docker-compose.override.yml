@@ -1,0 +1,15 @@
+# Local development override — hot reload via ts-node-dev, no Docker build needed.
+# Used automatically when running: docker compose up
+# To use the production build instead: docker compose -f docker-compose.yml up
+
+services:
+  market-agent:
+    build:
+      context: .
+      target: dev
+    command: npm run dev
+    volumes:
+      - ./src:/app/src
+      - ./tsconfig.json:/app/tsconfig.json
+    environment:
+      - NODE_ENV=development
