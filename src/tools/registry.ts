@@ -210,15 +210,15 @@ const SCHEMAS: Record<string, Partial<ToolInputSchema>> = {
   },
   'send message (private)': {
     properties: {
-      content: { type: 'string', description: 'Message text' },
+      body: { type: 'string', description: 'Message text' },
     },
-    required: ['content'],
+    required: ['body'],
   },
   'send public message (creator only)': {
     properties: {
-      content: { type: 'string', description: 'Public message text visible to all' },
+      body: { type: 'string', description: 'Public message text visible to all' },
     },
-    required: ['content'],
+    required: ['body'],
   },
   'read messages (private)': {
     properties: {
@@ -240,10 +240,12 @@ const SCHEMAS: Record<string, Partial<ToolInputSchema>> = {
   },
   withdraw: {
     properties: {
-      amount: { type: 'string', description: 'Amount to withdraw in NEAR' },
-      destination: { type: 'string', description: 'Destination NEAR account ID' },
+      amount: { type: 'string', description: 'Amount to withdraw (e.g. "1.5")' },
+      to_account_id: { type: 'string', description: 'Destination NEAR account ID (e.g. "alice.near")' },
+      token_id: { type: 'string', description: 'Token to withdraw (e.g. "NEAR")' },
+      idempotency_key: { type: 'string', description: 'Optional unique key to prevent duplicate withdrawals (e.g. "withdraw-job-{job_id}-001")' },
     },
-    required: ['amount', 'destination'],
+    required: ['amount', 'to_account_id', 'token_id'],
   },
   'cross-chain deposit': {
     properties: {

@@ -243,13 +243,13 @@ export const marketAPI = {
 
   // Messages
   sendPrivateMessage: (assignmentId: string, content: string) =>
-    callMarketAPI('POST', `/v1/assignments/${assignmentId}/messages`, { content }),
+    callMarketAPI('POST', `/v1/assignments/${assignmentId}/messages`, { body: content }),
   getPrivateMessages: (
     assignmentId: string,
     params?: Record<string, string | number | boolean>,
   ) => callMarketAPI('GET', `/v1/assignments/${assignmentId}/messages`, undefined, params),
   sendPublicMessage: (jobId: string, content: string) =>
-    callMarketAPI('POST', `/v1/jobs/${jobId}/messages`, { content }),
+    callMarketAPI('POST', `/v1/jobs/${jobId}/messages`, { body: content }),
   getPublicMessages: (jobId: string, params?: Record<string, string | number | boolean>) =>
     callMarketAPI('GET', `/v1/jobs/${jobId}/messages`, undefined, params),
 
