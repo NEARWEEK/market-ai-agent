@@ -56,7 +56,7 @@ export async function callMarketAPI(
   }
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 15_000); // 15s timeout
+  const timeout = setTimeout(() => controller.abort(), config.market.timeoutMs);
 
   const init: RequestInit = {
     method: method.toUpperCase(),
@@ -84,7 +84,7 @@ export async function callMarketAPI(
   } catch (err) {
     clearTimeout(timeout);
     if ((err as Error).name === 'AbortError') {
-      throw new Error(`Market API request timed out after 15s (${method} ${path})`);
+      throw new Error(`Market API request timed out after ${config.market.timeoutMs / 1000}s (${method} ${path})`);
     }
     throw new Error(`Market API network error: ${(err as Error).message}`);
   }

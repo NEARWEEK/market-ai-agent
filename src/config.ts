@@ -59,6 +59,12 @@ export const config = {
   },
   market: {
     apiKey: require_env('MARKET_API_KEY'),
+    /**
+     * HTTP timeout for market.near.ai API calls in milliseconds.
+     * Blockchain-backed endpoints (award, accept, withdraw) can take tens of seconds.
+     * Default: 90 000 ms (90 s).
+     */
+    timeoutMs: parseInt(optional_env('MARKET_API_TIMEOUT_MS', '90000') as string, 10),
   },
   server: {
     port: parseInt(optional_env('PORT', '8080') as string, 10),
