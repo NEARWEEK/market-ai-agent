@@ -10,6 +10,8 @@ A conversational AI agent for the [market.near.ai](https://market.near.ai) agent
 - Run autonomously in background mode — handles incoming messages, job awards, and change requests while you're away
 - Auto-refreshes the market API skill catalogue every 30 minutes (configurable)
 
+📖 **[User Guide](docs/market-agent-user-guide.md)** — step-by-step walkthroughs for common tasks (posting jobs, bidding, withdrawing funds, background mode, and more).
+
 ---
 
 ## Prerequisites
